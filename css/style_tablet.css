@@ -1,0 +1,75 @@
+@media screen and (min-width:481px) and (max-width:768px){
+    main{
+        margin: 0 1em;
+        height: auto;
+    }
+
+    .menu{
+        display: block;
+    }
+
+    .des-encriptador{
+        width: auto;
+    }
+
+    .texto-des-encriptador{
+        height: 800px;
+    }
+
+    #textosecreto{
+        margin-top: 3em;
+        margin-left: 1em;
+    }
+
+    .condicion{
+        top: 2em;
+    }
+
+    .botones{
+        top: 2em;
+    }
+
+    .btn-centrado{
+        width: 100%;
+        margin: 0 1em;
+    }
+
+    .contenedor-mensaje{
+        width: 100%;
+        margin: 4em 0 1em;
+    }
+
+    .imagen-mensaje{
+        margin-top: 5em;
+    }
+
+    #imagen-muñeco{
+        width: 0;
+    }
+
+    .atencion-mensaje-no-encontrado{
+        display: flex;
+        justify-content: center;
+        margin: 2em 0;
+    }
+
+    .atencion-mensaje-no-encontrado p{
+        font-size: 28px;
+    }
+
+    .atencion-descripcion{
+        padding-bottom: 2em;
+    }
+
+    .atencion-descripcion p{
+        font-size: 25px;
+    }
+
+    #contenedorTexto{
+        padding: 2em 1em;
+    }
+
+    #btnCopiar{
+        margin: 0 0 1em;
+    }
+}

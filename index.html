@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encriptador de texto - Alura</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style_celular.css">
+    <link rel="stylesheet" href="css/style_tablet.css">
+</head>
+<body>
+    <main>
+        <!--Logo Alura-->
+        <img src="imagenes/Vector.png" id="logo" alt="Logo Alura">
+
+        <form class="menu">
+
+            <!--Contenedor lado izquierdo-->
+            <div class="des-encriptador">
+                <div class="texto-des-encriptador">
+                    <textarea id="textosecreto" cols="50" rows="10" placeholder="Ingrese el texto aqui" required maxlength="500"></textarea>
+                </div>
+
+                <div class="condicion">
+
+                    <img src="imagenes/Vector_aviso.png" alt="aviso">
+                    <p id="aviso">Solo letras minúsculas y sin acentos</p>
+
+                </div>
+
+                <div class="botones">
+
+                    <div class="btn-centrado">
+                        <input type="button" value="Encriptar" class="btn-encriptar">
+                    </div>
+
+                    <div class="btn-centrado">
+                        <input type="button" value="Desencriptar" class="btn-desencriptar">
+                    </div>
+
+                </div>
+            </div>
+
+            <!--Contenedor lado derecho-->
+            <div class="contenedor-mensaje">
+                <div id="img" class="imagen-mensaje">
+                    <img id="imagen-muñeco" src="imagenes/Muñeco.png" alt="muñeco-mensaje-no-encontrado">
+                </div>
+
+                <div id="msg1" class="atencion-mensaje-no-encontrado">
+                    <p>Ningún mensaje fue encontrado</p>
+                </div>
+
+                <div id="descripcion" class="atencion-descripcion">
+                    <p>Ingresa el texto que deseas encriptar o desencriptar</p>
+                </div>
+
+                <div id="contenedorTexto" >
+                    <p id="mensajeSecreto"></p>
+                </div>
+
+                <div id="contenedorBtnCopiar">
+                    <input type="button" value="Copiar" id="btnCopiar" class="btn-copiar">
+                </div>
+            </div>
+        </form>     
+    </main>
+
+    <script>
+
+        //Capturando el boton html a JS
+        var btnEncriptar = document.querySelector(".btn-encriptar");
+        var btnDesencriptar = document.querySelector(".btn-desencriptar");
+        var btnCopiar = document.querySelector("#btnCopiar");
+
+        var textArea = document.querySelector("textarea");
+
+        function mostrarTexto(){ //Funcion 1: Ocultando elementos y otorgando estilos - botón
+
+            //Declarando
+            let contenedorTexto = document.getElementById("contenedorTexto");
+            let mensajeSecreto = document.getElementById("mensajeSecreto");
+            let btnCopiar = document.getElementById("contenedorBtnCopiar");
+            
+            //Ocultando y reemplazando estilos
+            document.getElementById("img").style.display = "none";
+            document.getElementById("msg1").style.display = "none";
+            document.getElementById("descripcion").style.display = "none";
+            contenedorTexto.style.top = "10%"
+            contenedorTexto.style.margin = "20px"
+            mensajeSecreto.style.textAlign = "justify";
+            mensajeSecreto.style.fontSize = "25px";
+            mensajeSecreto.style.color = "gray";
+            btnCopiar.style.display = "flex";
+            btnCopiar.style.top = "80%"
+
+        }
+
+        function cifrarTexto(){ //Funcion 2: Cifrando texto (reemplazando)
+
+            let texto = document.getElementById("textosecreto").value.toLowerCase();
+            let mensaje = document.getElementById("mensajeSecreto");
+
+            //Encriptando
+            let textoEncriptado = texto.replace(/e/igm, "enter");
+            //al tener el primero, seguimos guardando en textoEncriptado
+            textoEncriptado = textoEncriptado.replace(/i/igm, "imes");
+            textoEncriptado = textoEncriptado.replace(/a/igm, "ai");
+            textoEncriptado = textoEncriptado.replace(/o/igm, "ober");
+            textoEncriptado = textoEncriptado.replace(/u/igm, "ufat");
+
+            mensaje.innerHTML = textoEncriptado;
+
+        }
+
+        function descrifrarTexto(){ //Funcion 3: Descifrando texto (reemplazando)
+
+            let texto = document.getElementById("textosecreto").value.toLowerCase();
+            let mensaje = document.getElementById("mensajeSecreto");
+
+            //Descencriptando
+            let textoDesencriptado = texto.replace(/enter/igm, "e");
+            //al tener el primero, seguimos guardando en textoEncriptado
+            textoDesencriptado = textoDesencriptado.replace(/imes/igm, "i");
+            textoDesencriptado = textoDesencriptado.replace(/ai/igm, "a");
+            textoDesencriptado = textoDesencriptado.replace(/ober/igm, "o");
+            textoDesencriptado = textoDesencriptado.replace(/ufat/igm, "u");
+
+            mensaje.innerHTML = textoDesencriptado;
+        }
+
+        function encriptandoTexto(){ //Funcion para boton "Encriptar"
+
+            let texto = document.getElementById("textosecreto");
+            
+            mostrarTexto();
+            cifrarTexto();
+            textArea.value = ""
+            textArea.focus();
+
+        }
+
+        function desencriptandoTexto(){ //Funcion para boton "Desencriptar"
+
+            let texto = document.getElementById("textosecreto");
+
+            mostrarTexto();
+            descrifrarTexto();
+            textArea.value = "";
+            textArea.focus();
+
+        }
+
+        function copiar(){ //Funcion para boton "Copiar"
+
+            let textoCopiado = document.getElementById("mensajeSecreto").innerText; //<p> texto
+            let inputCopy = document.getElementById("btnCopiar");
+
+            textoCambiado();
+            navigator.clipboard.writeText(textoCopiado);
+
+        }
+
+        function textoCambiado(){ //Funcion para cambiar texto unos segundos al dar click (btn Copiar)
+
+            //let textoBoton = document.querySelector("#btnCopiar");
+            let textoBoton = document.getElementById("btnCopiar");
+            textoBoton.value = "¡Copiado!";
+            textoBoton.style.fontWeight = "bold";
+            textoBoton.style.background = "rgb(173 219 248)";
+
+            setTimeout(() => {
+                    textoBoton.value = "Copiar";
+                    textoBoton.style.fontWeight = "normal";
+                    textoBoton.style.background = "white"
+                }, 1500);
+        }
+
+        btnEncriptar.onclick = encriptandoTexto;
+        btnDesencriptar.onclick = desencriptandoTexto;
+        btnCopiar.onclick = copiar;
+
+    </script>
+</body>
+</html>

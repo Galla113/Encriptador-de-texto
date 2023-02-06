@@ -1,0 +1,89 @@
+@media screen and (max-width:480px) {
+    main{
+        width: auto;
+        margin: 0 10px;
+        padding: 0 0px;
+    }
+    
+    main #logo{
+        padding: 20px 20px;
+    }
+
+    .menu{
+        display: block;
+    }
+
+    .des-encriptador{
+        width: 100%;
+    }   
+
+    .texto-des-encriptador {
+        height: 600px;
+    }
+
+    #textosecreto {
+        font-size: 25px;
+        margin-top: 4em;
+        margin-left: 1em;
+    }
+
+    .condicion{
+        top: 50px;
+        justify-content: center;
+    }
+
+    .botones{
+        display: block;
+        top: 70px;
+    }
+
+    .btn-centrado{
+        width: 100%;
+        margin: 1em 0;
+    }
+
+    .btn-encriptar{
+        width: 90%;
+        height: 70px;
+    }
+
+    .btn-desencriptar{
+        width: 90%;
+        height: 70px;
+    }
+
+    /*Mensaje abajo*/
+
+    .contenedor-mensaje{
+        width: 100%;
+        margin: 7em 0 2em 0;
+        height: 20%;
+    }
+
+    .imagen-mensaje{
+        margin-top: 0;
+    }
+
+    #imagen-muñeco{
+        width: 0;
+    }
+
+    .atencion-mensaje-no-encontrado p {
+        margin-top: 1em;
+        font-size: 35px;
+        padding: 0 1em;
+    }
+
+    .atencion-descripcion p{
+        font-size: 20px ;
+        padding: 1em 1em;
+    }
+
+    #contenedorTexto{
+        padding: 2em 10px;
+    }
+
+    #btnCopiar{
+        margin: 0px 0 20px
+    }
+}

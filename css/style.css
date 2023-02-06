@@ -1,0 +1,193 @@
+/*General*/
+
+body{
+    font-family: 'Montserrat', sans-serif;
+    background-color: #F3F5FC;
+}
+
+main{
+    width: auto;
+    height: auto;
+    margin: 0px 40px;
+}
+
+/*Logo Alura fijo*/
+
+main #logo{
+    position: absolute;
+    padding: 50px 40px;
+}
+
+.menu{
+    display: flex;
+    justify-content: center;
+    height: 100%;
+}
+
+
+/*Lado izquierdo [(des)encriptador]*/
+
+
+.des-encriptador{
+    width: 50%;
+}
+
+.texto-des-encriptador{
+    display: flex;
+    justify-content: center;
+    height: 750px;
+}
+
+#textosecreto{
+    font-family: 'Gill Sans', sans-serif;
+    font-size: 50px;
+    color: rgb(65, 55, 55);
+    margin-top: 135px;
+    border-style: none;
+    text-align: justify;
+    background-color: #F3F5FC;
+}
+
+#textosecreto:focus{
+    outline: none;
+}
+
+.condicion{
+    display: flex;
+    position: relative;
+    width: auto;
+    margin: 0 5%;
+}
+
+.condicion img{
+    width: auto;
+    height: 15px;
+}
+
+#aviso{
+    margin-bottom: 20px;
+    margin-left: 10px;
+    color: grey;
+    font-weight: bold;
+}
+
+.botones{
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.btn-centrado{
+    display: flex;
+    justify-content: center;
+    width: 40%;
+    margin: 0 5%;
+}   
+
+.btn-encriptar{
+    width: 100%;
+    font-size: 30px;
+    font-weight: bold;
+    height: 100px;
+    background: #0A3871;
+    color: white;
+    border-radius: 50px;
+    transition: 0.3s all;
+    cursor: pointer;
+}
+
+.btn-encriptar:hover{
+    transform: scale(1.05);
+}
+
+.btn-encriptar:active{
+    background: #072549;
+}
+
+.btn-desencriptar{
+    width: 100%;
+    font-size: 30px;
+    font-weight: bold;
+    height: 100px;
+    background: #D8DFE8;
+    color: black;
+    border-radius: 50px;
+    transition: 0.3s all;
+    cursor: pointer;
+}
+
+.btn-desencriptar:hover{
+    transform: scale(1.05);
+}
+
+.btn-desencriptar:active{
+    background: #adb3bb;
+}
+
+
+/*Lado derecho [(des)encriptador]*/
+
+
+.contenedor-mensaje{
+    background-color: white;
+    width: 25%;
+    margin: 50px 100px 0 100px;
+    border-radius: 20px;
+    box-shadow: 0px 20px 40px 1px grey;
+}
+
+.imagen-mensaje{
+    display: flex;
+    justify-content: center;
+    margin-top: 50%;
+}
+
+#imagen-muñeco{
+    width: 80%;
+}
+
+.atencion-mensaje-no-encontrado{
+    position: relative;
+    top: 5%;
+}
+
+.atencion-mensaje-no-encontrado p{
+    font-size: 40px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.atencion-descripcion{
+    position: relative;
+    top: 8%;
+}
+
+.atencion-descripcion p{
+    text-align: center;
+    font-size: 25px;
+}
+
+#contenedorBtnCopiar{
+    display: none;
+    justify-content: center;
+    position: relative;
+}
+
+#btnCopiar{
+    width: 65%;
+    font-size: 25px;
+    height: 55px;
+    background: white;
+    border-radius: 50px;
+    border-color: rgb(7, 148, 236);
+    transition: 0.1s all;
+    cursor: pointer;
+}
+
+#btnCopiar:hover{
+    transform: scale(1.05);
+}
+
+#btnCopiar:active{
+    background: rgba(243, 240, 240, 0.911);
+}
