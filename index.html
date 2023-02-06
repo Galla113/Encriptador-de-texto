@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,6 +11,7 @@
     <link rel="stylesheet" href="css/style_celular.css">
     <link rel="stylesheet" href="css/style_tablet.css">
 </head>
+
 <body>
     <main>
         <!--Logo Alura-->
@@ -20,7 +22,8 @@
             <!--Contenedor lado izquierdo-->
             <div class="des-encriptador">
                 <div class="texto-des-encriptador">
-                    <textarea id="textosecreto" cols="50" rows="10" placeholder="Ingrese el texto aqui" required maxlength="500"></textarea>
+                    <textarea id="textosecreto" cols="50" rows="10" placeholder="Ingrese el texto aqui" required
+                        maxlength="500"></textarea>
                 </div>
 
                 <div class="condicion">
@@ -33,11 +36,11 @@
                 <div class="botones">
 
                     <div class="btn-centrado">
-                        <input type="button" value="Encriptar" class="btn-encriptar">
+                        <input type="button" value="Encriptar" id="btnEncriptar" class="btn-encriptar">
                     </div>
 
                     <div class="btn-centrado">
-                        <input type="button" value="Desencriptar" class="btn-desencriptar">
+                        <input type="button" value="Desencriptar" id="btnDesencriptar" class="btn-desencriptar">
                     </div>
 
                 </div>
@@ -57,7 +60,7 @@
                     <p>Ingresa el texto que deseas encriptar o desencriptar</p>
                 </div>
 
-                <div id="contenedorTexto" >
+                <div id="contenedorTexto">
                     <p id="mensajeSecreto"></p>
                 </div>
 
@@ -65,7 +68,7 @@
                     <input type="button" value="Copiar" id="btnCopiar" class="btn-copiar">
                 </div>
             </div>
-        </form>     
+        </form>
     </main>
 
     <script>
@@ -77,13 +80,13 @@
 
         var textArea = document.querySelector("textarea");
 
-        function mostrarTexto(){ //Funcion 1: Ocultando elementos y otorgando estilos - botón
+        function mostrarTexto() { //Funcion 1: Ocultando elementos y otorgando estilos - botón
 
             //Declarando
             let contenedorTexto = document.getElementById("contenedorTexto");
             let mensajeSecreto = document.getElementById("mensajeSecreto");
             let btnCopiar = document.getElementById("contenedorBtnCopiar");
-            
+
             //Ocultando y reemplazando estilos
             document.getElementById("img").style.display = "none";
             document.getElementById("msg1").style.display = "none";
@@ -98,7 +101,7 @@
 
         }
 
-        function cifrarTexto(){ //Funcion 2: Cifrando texto (reemplazando)
+        function cifrarTexto() { //Funcion 2: Cifrando texto (reemplazando)
 
             let texto = document.getElementById("textosecreto").value.toLowerCase();
             let mensaje = document.getElementById("mensajeSecreto");
@@ -115,7 +118,7 @@
 
         }
 
-        function descrifrarTexto(){ //Funcion 3: Descifrando texto (reemplazando)
+        function descrifrarTexto() { //Funcion 3: Descifrando texto (reemplazando)
 
             let texto = document.getElementById("textosecreto").value.toLowerCase();
             let mensaje = document.getElementById("mensajeSecreto");
@@ -131,51 +134,130 @@
             mensaje.innerHTML = textoDesencriptado;
         }
 
-        function encriptandoTexto(){ //Funcion para boton "Encriptar"
+        function encriptandoTexto() { //Funcion para boton "Encriptar"
 
-            let texto = document.getElementById("textosecreto");
-            
-            mostrarTexto();
-            cifrarTexto();
-            textArea.value = ""
+            let textoBoton = document.getElementById("btnEncriptar");
+            let textoBoton2 = document.getElementById("btnDesencriptar");
+
+            if (textArea.value == "") {
+                textArea.style.fontSize = "30px";
+                textArea.style.fontWeight = "bold";
+                textArea.style.color = "red";
+                textArea.style.transition = "0.8s"
+                textArea.value = "Digite alguna palabra para Encriptar/Desencriptar";
+                textoBoton.disabled = true;
+                textoBoton.style.background = "rgb(87, 91, 94)";
+                textoBoton2.disabled = true;
+                textoBoton2.style.background = "rgb(87, 91, 94)";
+                textoBoton2.style.color = "white";
+                
+
+                setTimeout(() => {
+                    textArea.value = "";
+                    textArea.style.fontSize = "50px";
+                    textArea.style.fontWeight = "normal";
+                    textArea.style.color = "black";
+                    textoBoton.disabled = false;
+                    textoBoton.style.background = "#0A3871";
+                    textoBoton2.disabled = false;
+                    textoBoton2.style.background = "#D8DFE8"
+                    textoBoton2.style.color = "black";
+                }, 2000);
+
+            }
+            else {
+
+                textoBoton.value = "¡Encriptado!";
+                textoBoton.style.fontSize = "35px";
+                textoBoton.style.background = "#0d478f";
+
+                setTimeout(() => {
+                    textoBoton.value = "Encriptar";
+                    textoBoton.style.background = "#0A3871";
+                    textoBoton.style.fontSize = "30px";
+                }, 1500);
+
+
+                mostrarTexto();
+                cifrarTexto();
+
+
+                textArea.value = ""
+            }
+
             textArea.focus();
 
         }
 
-        function desencriptandoTexto(){ //Funcion para boton "Desencriptar"
+        function desencriptandoTexto() { //Funcion para boton "Desencriptar"
+            let textoBoton = document.getElementById("btnEncriptar");
+            let textoBoton2 = document.getElementById("btnDesencriptar");
 
-            let texto = document.getElementById("textosecreto");
+            if (textArea.value == "") {
+                textArea.style.fontSize = "30px";
+                textArea.style.fontWeight = "bold";
+                textArea.style.color = "red";
+                textArea.style.transition = "0.8s"
+                textArea.value = "Digite alguna palabra para Encriptar/Desencriptar";
+                textoBoton.disabled = true;
+                textoBoton.style.background = "rgb(87, 91, 94)";
+                textoBoton2.disabled = true;
+                textoBoton2.style.background = "rgb(87, 91, 94)";
+                textoBoton2.style.color = "white";
+                
 
-            mostrarTexto();
-            descrifrarTexto();
-            textArea.value = "";
+                setTimeout(() => {
+                    textArea.value = "";
+                    textArea.style.fontSize = "50px";
+                    textArea.style.fontWeight = "normal";
+                    textArea.style.color = "black";
+                    textoBoton.disabled = false;
+                    textoBoton.style.background = "#0A3871";
+                    textoBoton2.disabled = false;
+                    textoBoton2.style.background = "#D8DFE8"
+                    textoBoton2.style.color = "black";
+                }, 2000);
+
+            }
+            else{
+                textoBoton2.value = "¡Desencriptado!";
+                textoBoton2.style.fontSize = "35px";
+                textoBoton2.style.background = "#a0a6ad";
+
+                setTimeout(() => {
+                    textoBoton2.value = "Desencriptar";
+                    textoBoton2.style.background = "#D8DFE8";
+                    textoBoton2.style.fontSize = "30px";
+                }, 2000);
+
+
+                mostrarTexto();
+                descrifrarTexto();
+                textArea.value = "";
+            }
+
             textArea.focus();
 
         }
 
-        function copiar(){ //Funcion para boton "Copiar"
+        function copiar() { //Funcion para boton "Copiar"
 
             let textoCopiado = document.getElementById("mensajeSecreto").innerText; //<p> texto
             let inputCopy = document.getElementById("btnCopiar");
 
+            inputCopy.value = "¡Copiado!";
+            inputCopy.style.fontWeight = "bold";
+            inputCopy.style.background = "rgb(173 219 248)";
+
+            setTimeout(() => {
+                inputCopy.value = "Copiar";
+                inputCopy.style.fontWeight = "normal";
+                inputCopy.style.background = "white"
+            }, 1500);
+
             textoCambiado();
             navigator.clipboard.writeText(textoCopiado);
 
-        }
-
-        function textoCambiado(){ //Funcion para cambiar texto unos segundos al dar click (btn Copiar)
-
-            //let textoBoton = document.querySelector("#btnCopiar");
-            let textoBoton = document.getElementById("btnCopiar");
-            textoBoton.value = "¡Copiado!";
-            textoBoton.style.fontWeight = "bold";
-            textoBoton.style.background = "rgb(173 219 248)";
-
-            setTimeout(() => {
-                    textoBoton.value = "Copiar";
-                    textoBoton.style.fontWeight = "normal";
-                    textoBoton.style.background = "white"
-                }, 1500);
         }
 
         btnEncriptar.onclick = encriptandoTexto;
@@ -184,4 +266,5 @@
 
     </script>
 </body>
+
 </html>
