@@ -86,4 +86,9 @@
     #btnCopiar{
         margin: 0px 0 20px;
     }
+
+    footer{
+        font-size: 13px;
+        text-align: center;
+    }
 }
